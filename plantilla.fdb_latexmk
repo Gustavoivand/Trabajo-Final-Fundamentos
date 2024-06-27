@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1719494684.28309 "d:/03.Gits/07.Trabajo Final/plantilla.tex" "plantilla.pdf" "plantilla" 1719494686.3223 0
+["pdflatex"] 1719507915.97774 "d:/03.Gits/07.Trabajo Final/plantilla.tex" "plantilla.pdf" "plantilla" 1719507917.33484 0
   "C:/Users/gusta/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1719474625 82686 2381c3433487640bf26aa76a10db7eb2 ""
   "C:/Users/gusta/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1709845231 24231886 a54bbf53863f32b10e31754f186bf7a9 ""
   "C:/Users/gusta/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -143,10 +143,10 @@
   "C:/Users/gusta/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/gusta/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "IEEEtran.cls" 1718220503 281961 d74e7bcbeb5bf76a5d759a555bbd4c24 ""
-  "d:/03.Gits/07.Trabajo Final/plantilla.tex" 1719494683 6616 1c43f17c0d991d4070964143ca238f50 ""
-  "plantilla.aux" 1719494686 3289 91c7735e5cca924ed4d58ba3b373fcb3 "pdflatex"
-  "plantilla.out" 1719494686 2713 95ac34e0a8dc7842ec4ca408b5d3dab6 "pdflatex"
-  "plantilla.tex" 1719494683 6616 1c43f17c0d991d4070964143ca238f50 ""
+  "d:/03.Gits/07.Trabajo Final/plantilla.tex" 1719507915 17853 4dabbe89b49a37fcf9af43c5a7f1c299 ""
+  "plantilla.aux" 1719507917 6829 8dcd16e3c62e58f64eed423092ed500d "pdflatex"
+  "plantilla.out" 1719507917 4954 3cf140a11ab565061d16f31605fe307d "pdflatex"
+  "plantilla.tex" 1719507915 17853 4dabbe89b49a37fcf9af43c5a7f1c299 ""
   (generated)
   "plantilla.aux"
   "plantilla.log"

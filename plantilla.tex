@@ -63,7 +63,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
     
 \begin{document}
-\title{\bf{Trabajo final de curso de Fundamentos de la programación 2024-I}}
+\title{\bf{Trabajo final de curso de Fundamentos de programación 2024-I}}
 %{\footnotesize \textsuperscript{*}}
 
 \author{\IEEEauthorblockN{
@@ -109,17 +109,17 @@ Aquí hacemos una simple comparación de códigos entre python y c++:
 \\
 Python:
 \begin{lstlisting}[language=Python,basicstyle=\small,caption=Script de bienvenida en Python]
-	print("Hola mundo")
+print("Hola mundo")
 \end{lstlisting}
 \vspace{0.2cm}
 C++:
 \begin{lstlisting}[language=C,basicstyle=\small,caption=Script de bienvenida en C++]
-	#include <iostream>
-	using namespace std;
-	int main(){
-		cout<<"Hola mundo";
-		return 0;
-	}
+#include <iostream>
+using namespace std;
+int main(){
+	cout<<"Hola mundo";
+	return 0;
+}
 \end{lstlisting}
 
 
@@ -152,7 +152,7 @@ C++:
 			\end{itemize}
 	\subsection{Algoritmo de Euclides}
 		El algoritmo de Euclides se utiliza para encontrar el 
-		**máximo común divisor (MCD)** de dos enteros positivos.
+		\textbf{máximo común divisor (MCD)} de dos enteros positivos.
 		Dados dos números \(a\) y \(b\), el algoritmo procede de la siguiente manera:
 		\begin{enumerate}
 			\item Realiza divisiones sucesivas:
@@ -164,46 +164,325 @@ C++:
 			\item El MCD es igual al valor final de \(b\).
 		\end{enumerate}
 	\subsection{Clases en Python}
-		En Python, las **clases** son como **constructores de objetos** o 
-		**plantillas** para crear instancias. Cada objeto creado a partir de
-		una clase tiene sus propias **propiedades** (variables) y **métodos** (funciones).
-		\subsubsection{title}
+		En Python, las \textbf{clases} son como \textbf{constructores de objetos} o 
+		\textbf{plantillas} para crear instancias. Cada objeto creado a partir de
+		una clase tiene sus propias \textbf{propiedades} (variables) y \textbf{métodos} (funciones).
+		\subsubsection{Crear una Clase}
+		Para crear una clase, se utiliza la palabra clave \textit{class}. Aquí un ejemplo:
+		\begin{lstlisting}[language=Python,basicstyle=\small,caption=Creación de una clase en Python]
+class MiClase:
+	x = 5
+		\end{lstlisting}
+		En este caso, hemos creado una clase llamada \textbf{MiClase} con una propiedad \textbf{x}
+		inicializada a 5.
+		\subsubsection{Crear un objeto}
+		Ahora podemos usar la clase \textbf{MiClase} para crear objetos:
+		\begin{lstlisting}[language=Python,basicstyle=\small,caption=Creación de un objeto en Python]
+p1 = MiClase()
+print(p1.x)
+		\end{lstlisting}
+		Esto creará un objeto llamado p1 y mostrará el valor de $x$, que es 5.
+		\subsubsection{El Método init()}
+		Para hacer que nuestras clases sean más útiles, utilizamos el método
+		\textbf{\underline{  }init\underline{  }()} .
+		Este método se ejecuta automáticamente cuando se crea un objeto. Aquí
+		un ejemplo:
+		\begin{lstlisting}[language=Python,basicstyle=\small,caption=Creación de un objeto en Python]
+class Persona:
+	def __init__(self, nombre, edad):
+		self.nombre = nombre
+		self.edad = edad
+		
+p1 = Persona("Juan", 30)
+print(f"Nombre: {p1.nombre}, Edad: {p1.edad}")
+		\end{lstlisting}
+		En este caso, se ha creado una clase Persona con un método \underline{  }init\underline{  }()
+		que asigna valores a las propiedades \textbf{nombre} y \textbf{edad}.
+		\subsubsection{Métodos de clase}
+		Las clases también pueden contener \textbf{métodos}. Los métodos son funciones
+		que pertenecen al objeto. Aquí un ejemplo:
+		\begin{lstlisting}[language=Python,basicstyle=\small,caption=Creación de un método en Python]
+class Persona:
+	def __init__(self, nombre, edad):
+		self.nombre = nombre
+		self.edad = edad
+
+	def saludar(self):
+		print(f"Hola, mi nombre es {self.nombre}.")
+
+p1 = Persona("Juan", 30)
+p1.saludar()
+		\end{lstlisting}
+		En este caso, el método saludar muestra un saludo utilizando el nombre de la persona.
+	\subsection{Fundamentos de Tkinter}
+	Tkinter es la interfaz de python para \textbf{Tk}, el conjunto
+	de herramientas gráficas utilizado para construir programas con
+	una interfaz gráfica.
+	\subsubsection{Hola, mundo!}
+	El primer programa que se recomienda realizar en Tkinter 
+	es \textbf{Hola mundo!}. La idea es mostrar una ventana
+	simple con un mensaje de bienvenida.
+	\begin{lstlisting}[language=Python,basicstyle=\small,caption=Creación de un programa en Tkinter]
+import tkinter as tk
+
+root = tk.Tk()
+label = tk.Label(root, text="Hola, Mundo!")
+label.pack()
+
+root.mainloop()
+	\end{lstlisting}
+	De esta manera podemos usar tkinter para crear una interfaz gráfica
+	para los programa que desarrollemos.
+	\subsection{Introducción a Openseespy}
+	OpenSeesPy es una interfaz de Python para OpenSees, 
+	un software de análisis estructural que permite realizar 
+	simulaciones de la respuesta sísmica de estructuras. 
+	Esta sección proporciona una introducción básica a OpenSeesPy, 
+	incluyendo la configuración del entorno, la creación de modelos y 
+	la ejecución de análisis.
+	\subsubsection{Creación de un Modelo Básico}
+	A continuación se muestra un ejemplo de cómo crear un modelo básico en OpenSeesPy. 
+	Este modelo consiste en un marco simple con dos nodos y una barra.
+	\begin{lstlisting}[language=Python, caption=Creación de un Modelo Básico en OpenSeesPy]
+import openseespy.opensees as ops
+
+# Definir el modelo
+ops.wipe()
+ops.model('basic', '-ndm', 2, '-ndf', 3)
+
+# Crear nodos
+ops.node(1, 0, 0)
+ops.node(2, 144, 0)
+ops.node(3, 168, 0)
+ops.node(4, 72, 96)
+
+# Asignar restricciones a los nodos
+ops.fix(1, 1, 1, 1)
+ops.fix(2, 0, 1, 0)
+ops.fix(3, 0, 1, 0)
+
+# Definir secciones y materiales
+ops.uniaxialMaterial('Elastic', 1, 3000.0)
+
+# Crear elementos
+ops.element('truss', 1, 1, 4, 10.0, 1)
+ops.element('truss', 2, 2, 4, 10.0, 1)
+ops.element('truss', 3, 3, 4, 10.0, 1)
+
+# Definir cargas
+ops.timeSeries('Linear', 1)
+ops.pattern('Plain', 1, 1, '-fact', 1.0)
+ops.load(4, 100.0, -50.0, 0.0)
+
+# Realizar el analisis
+ops.system('BandGen')
+ops.numberer('Plain')
+ops.constraints('Plain')
+ops.integrator('LoadControl', 1.0)
+ops.algorithm('Linear')
+ops.analysis('Static')
+
+ops.analyze(1)
+
+# Obtener resultados
+disp = ops.nodeDisp(4)
+print(f'Desplazamientos en el nodo 4: {disp}')
+		\end{lstlisting}
+				
+		\subsubsection5{Explicación del código}
+\begin{itemize}
+    \item \texttt{ops.wipe()}: Borra el modelo previo.
+    \item \texttt{ops.model('basic', '-ndm', 2, '-ndf', 3)}: Define un modelo en 2 dimensiones con 3 grados de libertad por nodo.
+    \item \texttt{ops.node()}: Crea nodos con coordenadas específicas.
+    \item \texttt{ops.fix()}: Asigna restricciones a los nodos.
+    \item \texttt{ops.uniaxialMaterial('Elastic', 1, 3000.0)}: Define un material elástico.
+    \item \texttt{ops.element('truss', ...)}: Crea elementos de tipo armadura.
+    \item \texttt{ops.timeSeries()} y \texttt{ops.pattern()}: Definen la serie temporal y el patrón de carga.
+    \item \texttt{ops.load()}: Aplica cargas a los nodos.
+    \item \texttt{ops.system()}, \texttt{ops.numberer()}, \texttt{ops.constraints()}, \texttt{ops.integrator()}, \texttt{ops.algorithm()} y \texttt{ops.analysis()}: Configuran y realizan el análisis estático.
+    \item \texttt{ops.analyze(1)}: Ejecuta el análisis.
+    \item \texttt{ops.nodeDisp(4)}: Obtiene los desplazamientos del nodo 4.
+\end{itemize}
+	\subsection{Scikit-learn}
+	Scikit-learn es una biblioteca de código abierto para 
+	el aprendizaje automático en Python. Proporciona herramientas 
+	simples y eficientes para la minería de datos y el análisis de datos. 
+	Es accesible a todos y reutilizable en diversos contextos.
+	\subsubsection{Carga de Datos}
+	Scikit-learn proporciona varios conjuntos de datos de 
+	ejemplo que pueden ser cargados fácilmente. 
+	A continuación se muestra un ejemplo de cómo cargar el 
+	conjunto de datos Iris.
+
+	\begin{lstlisting}[language=Python, caption=Carga del Conjunto de Datos Iris]
+from sklearn.datasets import load_iris
+import pandas as pd
+
+# Cargar el conjunto de datos Iris
+iris = load_iris()
+data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+data['target'] = iris.target
+
+print(data.head())
+	\end{lstlisting}
+	\subsubsection{Entrenamiento de un Modelo}
+	A continuación se muestra un ejemplo de cómo entrenar 
+	un modelo de clasificación utilizando el algoritmo 
+	de vecinos más cercanos (K-Nearest Neighbors).
+	\begin{lstlisting}[language=Python, caption=Entrenamiento de un Modelo de K-Nearest Neighbors]
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+# Dividir los datos en conjuntos de entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(data[iris.feature_names], data['target'], test_size=0.2, random_state=42)
+
+# Crear el modelo K-Nearest Neighbors
+knn = KNeighborsClassifier(n_neighbors=3)
+
+# Entrenar el modelo
+knn.fit(X_train, y_train)
+
+# Predecir las etiquetas para el conjunto de prueba
+y_pred = knn.predict(X_test)
+
+# Evaluar la precision del modelo
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Precision del modelo: {accuracy}')
+	\end{lstlisting}
+	\subsubsection{Evaluación del modelo}
+	La evaluación del rendimiento del modelo es crucial para entender su eficacia. A continuación se muestra 
+	un ejemplo de cómo evaluar un modelo utilizando una matriz de confusión.
+	\begin{lstlisting}[language=Python, caption=Evaluación del Modelo con Matriz de Confusión]
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Calcular la matriz de confusion
+cm = confusion_matrix(y_test, y_pred)
+
+# Visualizar la matriz de confusion
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=iris.target_names, yticklabels=iris.target_names)
+plt.xlabel('Prediccion')
+plt.ylabel('Realidad')
+plt.show()
+	\end{lstlisting}
+	Scikit-learn es una biblioteca poderosa y flexible que facilita 
+	el proceso de creación, entrenamiento y evaluación de modelos de 
+	aprendizaje automático.
+\section{Metodología}
+El trabajo realizado implicó investigar las características del lenguaje Python,
+así como también la implementación directa de lo aprendido sobre un grupo de problemas
+propuestos por los profesores del curso.
+\section{Experimentación y resultados}
+
+\subsection{Ejercicios de implementación directa}
+En esta primera parte del trabajo, se nos solicitó implementar
+algunos problemas sencillos en Python, a continuación la implementación
+de los mismos.
+
+\subsubsection{Factorial}
+Como primer problema, se solicitó implementar una función
+que calcule el factorial de un número.
+\begin{lstlisting}[language=Python, caption=Factorial]
+def Factorial(a):
+if a==0:
+	return 1
+else:
+	return a*Factorial(a-1)
+\end{lstlisting}
 
 
+\subsubsection{MCD}
+Como segundo problema, se solicitó implementar una función
+que calcule el MCD de dos números usando recursividad.
+\begin{lstlisting}[language=Python, caption=MCD]
+def MCD(a, b):
+if b==0:
+	return a
+else:
+	return MCD(b,a%b)
+\end{lstlisting}
+
+\subsubsection{Clase y método de impresión}
+Como tercer problema, se solicitó implementar una función
+que cree una clase y un método de impresión de datos de un
+objeto de esta clase.
+\begin{lstlisting}[language=Python, caption=Clase e impresión]
+class Persona:
+def __init__(self, nombre, edad):
+	self.nombre = nombre
+	self.edad = edad
+
+def mostrar_datos(self):
+	print(f"Nombre: {self.nombre}, Edad: {self.edad}")
 
 
+person1 = Persona("Gustavo", 34)
 
-\section{Estado del Arte}
+person1.mostrar_datos()
+\end{lstlisting}
 
+\subsubsection{Clase y cálculo de datos}
+Como cuarto problema, se solicitó implementar una función
+que cree una clase y un método de cálculo de datos de un
+objeto de esta clase.
+\begin{lstlisting}[language=Python, caption=Clase y cálculo]
+class CuentaBancaria:
+	def __init__(self, NumeroCuenta, CantidadDePlatita):
+		self.NumeroCuenta = NumeroCuenta
+		self.CantidadDePlatita = CantidadDePlatita
+	def mostrar_datos(self):
+		print(f"Numero de Cuenta: {self.NumeroCuenta}, Dinero en cuenta: {self.CantidadDePlatita}")
+	def depositar(self,deposito):
+		self.CantidadDePlatita=self.CantidadDePlatita+deposito
+		self.mostrar_datos()
+	def retirar(self,retiro):
+		saldofinal=self.CantidadDePlatita-retiro
+		if (saldofinal<0):
+			print("Saldo insuficiente para efectura retiro")
+		else:
+			self.CantidadDePlatita=saldofinal
+			self.mostrar_datos()
 
-\subsection{Transformador Universal}
+Cuenta1 = CuentaBancaria("Gustavo", 34)
 
-	\subsection{BERT}
+\end{lstlisting}
 
+\subsubsection{Manipulación de archivos de texto}
+Como quinto problema, se solicitó implementar una serie de funciones
+que permitan la creación, modificación y guardado de archivos de texto.
+\begin{lstlisting}[language=Python, caption=Clase y cálculo]
+# Funcion para crear un nuevo archivo de texto
+def create_file(file_name, content):
+	with open(file_name, 'w') as file:
+		file.write(content)
+	print(f"Archivo '{file_name}' creado con exito")
 
+# Funcion para leer y mostrar los datos de un archivo de texto
+def read_file(file_name):
+	try:
+		with open(file_name, 'r') as file:
+			content = file.read()
+			print(f"Content of '{file_name}':")
+			print(content)
+	except FileNotFoundError:
+		print(f"File '{file_name}' not found!")
 
-	\subsection{GPT-2}
-
-
-		\subsubsection{Resultados}
-
-
-
-	\subsection{Transformadores dispersos}
-
-
-
-	\subsection{XLNet}
-
-
-\section{Metodolog\'ia}
-
-\section{Experimentaci\'on y resultados}
-
+# Funcion para agregar datos a un archivo de texto
+def append_to_file(file_name, new_content):
+	try:
+		with open(file_name, 'a') as file:
+			file.write(new_content + '\n')
+		print(f"New content appended to '{file_name}' successfully!")
+	except FileNotFoundError:
+		print(f"File '{file_name}' not found!")
+	
+\end{lstlisting}
 
 \section{Conclusiones}
 
-\section{Discusi\'on}
+\section{Discusión}
 
 \section{Conclusiones y trabajos futuros}
 
